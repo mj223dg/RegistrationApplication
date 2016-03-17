@@ -8,8 +8,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    #if user.admin? = app.all?
-    #end
+    if @user.admin?
+      @apps = App.all
+    else
+      @apps = @user.apps
+    end
   end
 
   def create

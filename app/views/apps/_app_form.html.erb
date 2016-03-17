@@ -1,0 +1,10 @@
+<%= form_for(@app) do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "Application name" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <%= f.submit "Create application", class: "btn btn-primary" %>
+
+    <%= link_to "Back", home_path, class: "btn btn-primary" %>
+<% end %>
