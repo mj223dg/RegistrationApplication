@@ -7,7 +7,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.new
+    @user = User.find(params[:id])
+    #if user.admin? = app.all?
+    #end
   end
 
   def create

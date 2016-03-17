@@ -37,4 +37,18 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+
+  def admin?
+    currentdev_user.admin?
+  end
+
+  def check_if_admin
+    unless logged_in?
+      redirect_to login_path
+    else
+      unless currentdev_user.admin?
+        redirect_to currentdev_user
+      end
+    end
+  end
 end

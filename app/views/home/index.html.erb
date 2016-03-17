@@ -1,1 +1,10 @@
-<h1>View your applications</h1>
+
+<% if logged_in? %>
+  <h1>Your applications</h1>
+
+
+  <% else %>
+    <h1>Welcome to the Registration application</h1>
+    <li><%= link_to "Sign in", login_path, class: "btn btn-primary-outline"%></li>
+    <li><%= link_to "Sign up", new_user_path, class: "btn btn-primary-outline" %></li>
+<% end %>
