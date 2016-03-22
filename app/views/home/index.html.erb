@@ -2,10 +2,10 @@
 <% if logged_in? %>
   <h1>Your applications</h1>
 
-    <li><%= link_to "Create application", new_app_path, class: "btn btn-primary-outline"%></li>
-    <li><%= link_to "Your applications", currentdev_user, class: "btn btn-primary-outline"%></li>
+    <li><%= link_to "Create application", new_app_path, :class => 'btn btn-primary-outline' %></li>
+    <li><%= link_to "Your applications", currentdev_user, :class => 'btn btn-primary-outline' %></li>
   <% else %>
     <h1>Welcome to the Registration application</h1>
-    <li><%= link_to "Sign in", login_path, class: "btn btn-primary-outline"%></li>
-    <li><%= link_to "Sign up", new_user_path, class: "btn btn-primary-outline" %></li>
+    <li> <%= link_to "Sign in", login_path, :class => 'btn btn-primary btn-lg' %></li>
+    <li> <%= link_to "Sign up", new_user_path, :class => 'btn btn-primary btn-lg' %></li>
 <% end %>
