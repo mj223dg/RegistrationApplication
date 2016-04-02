@@ -1,8 +1,8 @@
 class Position < ActiveRecord::Base
-  has_one :events
+  has_one :event
 
-  validates :longitude, presence: true
-  validates :latitude, presence: true
-
+  #validates :longitude, presence: true
+  #validates :latitude, presence: true
+  validates :address, presence: true
 
 end

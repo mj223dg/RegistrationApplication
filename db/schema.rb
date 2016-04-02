@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328143652) do
+ActiveRecord::Schema.define(version: 20160402134354) do
 
   create_table "apps", force: :cascade do |t|
     t.string   "name",       null: false
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160328143652) do
     t.float    "latitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "address"
   end
 
   create_table "tags", force: :cascade do |t|
