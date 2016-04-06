@@ -33,6 +33,10 @@ gem 'geocoder'
 # ActiveModelSerializers
 gem 'active_model_serializers'
 
+gem 'responders', '~> 2.0'
+
+gem 'knock'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

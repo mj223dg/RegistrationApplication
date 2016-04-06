@@ -8,3 +8,5 @@
 
 
     User.create(name: 'Admin', email: 'Admin@hotmail.com', password: 'admin123', admin: true)
+
+    Creator.create(email: 'Creator@hotmail.com', password: 'creator123')
