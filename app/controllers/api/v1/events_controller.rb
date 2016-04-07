@@ -47,21 +47,21 @@ class Api::V1::EventsController < Api::V1::ApiController
   def create
     begin
       return unless position_param_present? && position_is_available?
-      9.times {puts event_params}
       event = Event.new(event_params.except(:tags, :position))
       event.creator = current_user
-
+      10.times {puts current_user.id}
       tags = event_params[:tags]
 
       if tags
         tags.each do |t|
+
           event.tags << Tag.where(t).first_or_create
         end
       end
-      event.position = Position.create(event_params[:position])
 
       if event.save
 
+        event.position = Position.create(event_params[:position])
         respond_with event, status: 201, location: [:api, event]
       else
         render json: {errors: event.errors.messages}, status: :bad_request
@@ -121,7 +121,6 @@ class Api::V1::EventsController < Api::V1::ApiController
 
   def get_events_near_positions(positions_params)
     events = []
-    10.times {puts positions_params}
     distance = params[:distance] ? params[:distance] : DISTANCE
     positions = Position.near(positions_params, distance, :units => :km)
     positions.each do |d|

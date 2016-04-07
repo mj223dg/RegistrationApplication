@@ -12,12 +12,12 @@ module SessionsHelper
 
   def currentdev_user
     if (user_id = session[:user_id])
-    @current_user ||= User.find_by(id: user_id)
+    @currentdev_user ||= User.find_by(id: user_id)
     elsif (user_id = cookies.signed[:user_id])
       user = User.find_by(id: user_id)
       if user && user.authenticated?(cookies[:remember_token])
         log_in user
-        @current_user
+        @currentdev_user
       end
     end
   end
@@ -35,7 +35,7 @@ module SessionsHelper
   def log_out
     forget(currentdev_user)
     session.delete(:user_id)
-    @current_user = nil
+    @currentdev_user = nil
   end
 
   def admin?
