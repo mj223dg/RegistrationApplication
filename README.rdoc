@@ -54,9 +54,6 @@ https://powerful-shelf-52990.herokuapp.com/api/tags/1
 Hämta ut specifikt event:
 https://powerful-shelf-52990.herokuapp.com/api/events/1
 
-Uppdatera ett event:
-https://powerful-shelf-52990.herokuapp.com/api/events/1
-
 Ta bort ett specifikt event:
 https://powerful-shelf-52990.herokuapp.com/api/events/3
 
@@ -65,6 +62,18 @@ https://powerful-shelf-52990.herokuapp.com/api/events?near_address=Gröndalsväg
 
 Om man försöker hämta en creator som inte finns:
 https://powerful-shelf-52990.herokuapp.com/api/creators/999
+
+Uppdatera ett event:
+https://powerful-shelf-52990.herokuapp.com/api/events/1
+Exempel:
+{
+    "event":{
+        "name": "Uppdaterad fest",
+        "description": "Dricka alkohol"
+                
+    }
+}
+
 
 Hämta specifikt antal event:
 https://powerful-shelf-52990.herokuapp.com/api/events?limit=2&offset=1
