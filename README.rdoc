@@ -1,28 +1,110 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Mitt api nås via :
+https://powerful-shelf-52990.herokuapp.com/api/
 
-Things you may want to cover:
+Vid varje request så krävs en API-nyckel, man måste därför innan man kan skicka ett request be om en nyckel:
+Headers:
+apikey > 7d0e08a67bf5b1e646b97bb34cdf0d1b
 
-* Ruby version
+Format:
 
-* System dependencies
+Json är standardformat för mitt api, har ej löst så att XML funkar.
 
-* Configuration
+Autentisering:
 
-* Database creation
+Innan man kan göra anrop behöver man även autentisera sig genom att:
 
-* Database initialization
+https://powerful-shelf-52990.herokuapp.com/knock/auth_token
+Headers:
+Content-type > application/json
+Body: 
 
-* How to run the test suite
+{"auth": {"email": "Creator@hotmail.com", "password": "creator123"}} = giltig API-Nyckel(JWT_TOKEN)
 
-* Services (job queues, cache servers, search engines, etc.)
+Därefter så skickar man med den jwt-token man får, med i varje request. Tex för att få alla events:
 
-* Deployment instructions
+Get: 
+https://powerful-shelf-52990.herokuapp.com/api/events
+Headers: 
+Content-type > application:json
+Authorization > Bearer JWT_TOKEN
 
-* ...
+
+Anrop:
+
+Hämta ut alla events:
+https://powerful-shelf-52990.herokuapp.com/api/events
+
+Hämta ut alla tags:
+https://powerful-shelf-52990.herokuapp.com/api/tags
+
+Hämta ut alla positions:
+https://powerful-shelf-52990.herokuapp.com/api/positions
+
+Hämta ut alla creators: 
+https://powerful-shelf-52990.herokuapp.com/api/creators
+
+Hämta ut specifik creator:
+https://powerful-shelf-52990.herokuapp.com/api/creators/1
+
+Hämta ut specifik tag:
+https://powerful-shelf-52990.herokuapp.com/api/tags/1
+
+Hämta ut specifikt event:
+https://powerful-shelf-52990.herokuapp.com/api/events/1
+
+Ta bort ett specifikt event:
+https://powerful-shelf-52990.herokuapp.com/api/events/3
+
+Hämta ut event som är nära adressen:
+https://powerful-shelf-52990.herokuapp.com/api/events?near_address=Gröndalsvägen
+
+Om man försöker hämta en creator som inte finns:
+https://powerful-shelf-52990.herokuapp.com/api/creators/999
+
+Uppdatera ett event:
+https://powerful-shelf-52990.herokuapp.com/api/events/1
+Exempel:
+{
+    "event":{
+        "name": "Uppdaterad fest",
+        "description": "Dricka alkohol"
+                
+    }
+}
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Hämta specifikt antal event:
+https://powerful-shelf-52990.herokuapp.com/api/events?limit=2&offset=1
+
+Skapa event med tags:
+https://powerful-shelf-52990.herokuapp.com/api/events
+
+Exempel:
+{
+    "event":{
+        "name": "alex fest",
+        "description": "Dricka alkohol",
+        "tags":[
+                {"name": "Nice med fest"}
+            ],
+            "position":
+                {"address": "Gröndalsvägen 27"}
+                
+    }
+}
+
+Skapa event utan tags:
+https://powerful-shelf-52990.herokuapp.com/api/events
+
+Exempel:
+{
+    "event":{
+        "name": "alex fest",
+        "description": "Dricka alkohol",
+            "position":
+                {"address": "Gröndalsvägen 29"}
+                
+    }
+}
