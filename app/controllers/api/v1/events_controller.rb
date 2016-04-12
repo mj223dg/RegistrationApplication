@@ -21,8 +21,8 @@ class Api::V1::EventsController < Api::V1::ApiController
     elsif params[:creator_id]
       creator = Creator.find_by_id(params{:creator_id})
       events =creator.events.limit(@limit).offset(@offset) if creator.present?
-    elsif params[:nearby_address]
-      events = get_nearby_events(params[:nearby_address])
+    elsif params[:near_address]
+      events = get_events_near_positions([params[:latitude], params[:longitude]])
     else
       events = Event.all
     end
@@ -119,7 +119,7 @@ class Api::V1::EventsController < Api::V1::ApiController
     true
   end
 
-  def get_nearby_events(positions_params)
+  def get_events_near_positions(positions_params)
     events = []
     distance = params[:distance] ? params[:distance] : DISTANCE
     positions = Position.near(positions_params, distance, :units => :km)
