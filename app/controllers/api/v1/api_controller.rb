@@ -3,11 +3,11 @@ class Api::V1::ApiController < ApplicationController
   include Knock::Authenticable
   protect_from_forgery with: :null_session
   before_action :authenticate
+  before_filter :restrict_access
 
   THERE_IS_NO_API_KEY = "Api-key is missing"
 
   #default parameters
-
   OFFSET = 0
   LIMIT = 20
 
