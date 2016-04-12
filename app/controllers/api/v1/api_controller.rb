@@ -26,7 +26,7 @@ class Api::V1::ApiController < ApplicationController
   private
   def restrict_access
     api_key = request.headers["apikey"]
-    app = App.where(api_key: api_key).first if api_key
+    app = App.where(apikey: api_key).first if api_key
     unless app
       render json: {error: THERE_IS_NO_API_KEY}, status: :not_found
     end
