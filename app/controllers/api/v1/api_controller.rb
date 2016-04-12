@@ -3,6 +3,9 @@ class Api::V1::ApiController < ApplicationController
   include Knock::Authenticable
   protect_from_forgery with: :null_session
   before_action :authenticate
+
+  THERE_IS_NO_API_KEY = "Api-key is missing"
+
   #default parameters
 
   OFFSET = 0
@@ -18,5 +21,15 @@ class Api::V1::ApiController < ApplicationController
     end
     @offset ||= OFFSET
     @limit ||= LIMIT
+  end
+
+  private
+  def restrict_access
+    api_key = request.headers["apikey"]
+    app = App.where(api_key: api_key).first if api_key
+    unless app
+      render json: {error: THERE_IS_NO_API_KEY}, status: :not_found
+    end
+
   end
 end
