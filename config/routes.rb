@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :events do
         resources :tags, only: [:index, :create]
       end
+      resources :tags, only: [:index, :show]
       resources :positions, only: [:index, :show]
       resources :creators, only: [:index, :show] do
         resources :events, only: [:index]
