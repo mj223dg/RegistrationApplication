@@ -29,7 +29,7 @@ class Api::V1::EventsController < Api::V1::ApiController
     if events.present?
       events = events.starts_with(params[:starts_with]) if params[:starts_with]
       response = {offset: @offset, limit: @limit, count: events.count, events: ActiveModel::ArraySerializer.new(events)}
-      responds_with response
+      respond_with response
     else
       render json: {error: CANNOT_FIND_EVENT }, status: :not_found
     end
