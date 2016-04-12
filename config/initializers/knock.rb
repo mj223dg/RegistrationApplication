@@ -76,6 +76,7 @@ Knock.setup do |config|
   ## If using Auth0, uncomment the line below
   # config.token_secret_signature_key = -> { JWT.base64url_decode Rails.application.secrets.auth0_client_secret }
 
+
   ## Public key
   ## ----------
   ##
