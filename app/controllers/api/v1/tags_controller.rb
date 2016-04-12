@@ -1,7 +1,7 @@
 class Api::V1::TagsController < Api::V1::ApiController
   respond_to :json
 
-  COULDNT_FIND_ID = "couldnt find an event with the id of "
+  #COULDNT_FIND_ID = "couldnt find an event with the id of "
   COULDT_FIND_EVENT = "couldnt find event id"
   NEED_A_EVENT = "Need a event"
   COULDNT_PARSE_JSON = "Couldnt parse json"
@@ -12,7 +12,7 @@ class Api::V1::TagsController < Api::V1::ApiController
       if event.present?
         tags = event.tags
       else
-        render json: {error: COULDNT_FIND_ID {params[:event_id]}}, status: :not_found and return
+        render json: {error: "couldnt find an tags with the id of #{params[:id]}" }, status: :not_found and return
       end
     else
       tags = Tag.all
@@ -51,7 +51,7 @@ class Api::V1::TagsController < Api::V1::ApiController
     if tag.present?
       respond_with tag, status: :ok
     else
-      render json: {error: COULDNT_FIND_ID {params[:event_id]}}, status: :not_found and return
+      render json: {error: "couldnt find a tag with the id of #{params[:id]}" }, status: :not_found and return
     end
   end
 

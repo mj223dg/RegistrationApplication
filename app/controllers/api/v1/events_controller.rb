@@ -1,7 +1,7 @@
 class Api::V1::EventsController < Api::V1::ApiController
   respond_to :json
   before_action :authenticate
-  COULDNT_FIND_ID = "couldnt find an event with the id of "
+  #COULDNT_FIND_ID = "couldnt find an event with the id of "
   CANNOT_FIND_EVENT = "Couldnt find any event"
   COULDNT_PARSE_JSON = "Couldnt parse json"
   UPD = "update"
@@ -40,7 +40,7 @@ class Api::V1::EventsController < Api::V1::ApiController
     if event.present?
       respond_with event, status: :ok
     else
-      render json: {error: COULDNT_FIND_ID {params[:id]}}, status: :not_found
+      render json: {error: "couldnt find an event with the id of #{params[:id]}" }, status: :not_found
     end
   end
 
