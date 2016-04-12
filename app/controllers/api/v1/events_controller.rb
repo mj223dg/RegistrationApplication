@@ -36,7 +36,7 @@ class Api::V1::EventsController < Api::V1::ApiController
   end
 
   def show
-    event = Event.find(params[:id])
+    event = Event.find_by_id(params[:id])
     if event.present?
       respond_with event, status: :ok
     else

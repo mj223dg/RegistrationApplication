@@ -6,6 +6,6 @@ class Api::V1::PositionsController < Api::V1::ApiController
 
   def
     show
-    respond_with Position.find(params[:id])
+    respond_with Position.find_by_id(params[:id])
   end
 end

@@ -5,7 +5,7 @@ class Api::V1::CreatorsController < Api::V1::ApiController
   end
 
   def show
-    respond_with Creator.find(params[:id])
+    respond_with Creator.find_by_id(params[:id])
   end
 
 end
