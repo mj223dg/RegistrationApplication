@@ -1,5 +1,6 @@
 class Api::V1::TagsController < Api::V1::ApiController
   respond_to :json
+  before_action :offset_params, only: [:index]
 
   #COULDNT_FIND_ID = "couldnt find an event with the id of "
   COULDT_FIND_EVENT = "couldnt find event id"

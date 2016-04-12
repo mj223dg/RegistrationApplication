@@ -1,7 +1,9 @@
 class Api::V1::PositionsController < Api::V1::ApiController
   respond_to :json
+  before_action :offset_params, only: [:index]
 
   #COULDNT_FIND_ID = "couldnt find a position with the id of "
+
   def index
     respond_with Position.limit(@limit).offset(@offset)
   end

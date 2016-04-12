@@ -1,6 +1,7 @@
 class Api::V1::EventsController < Api::V1::ApiController
   respond_to :json
   before_action :authenticate
+  before_action :offset_params, only: [:index]
   #COULDNT_FIND_ID = "couldnt find an event with the id of "
   CANNOT_FIND_EVENT = "Couldnt find any event"
   COULDNT_PARSE_JSON = "Couldnt parse json"

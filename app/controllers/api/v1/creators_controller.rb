@@ -1,6 +1,6 @@
 class Api::V1::CreatorsController < Api::V1::ApiController
   respond_to :json
-
+  before_action :offset_params, only: [:index]
   #COULDNT_FIND_ID = "couldnt find an creator with the id of "
 
   def index
