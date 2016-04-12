@@ -1,4 +1,5 @@
 == README
+Postman collection fil finns i mappen Postman.
 
 Mitt api nås via :
 https://powerful-shelf-52990.herokuapp.com/api/
