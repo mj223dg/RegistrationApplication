@@ -8,7 +8,7 @@ class EventSerializer < ActiveModel::Serializer
   def links
     {
         self: api_event_path(object.id),
-        position: api_event_position_path(object.id),
+        position: api_position_path(object.position.id),
         tag: api_event_tags_path(object.id)
     }
   end

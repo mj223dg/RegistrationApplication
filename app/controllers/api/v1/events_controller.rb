@@ -21,8 +21,8 @@ class Api::V1::EventsController < Api::V1::ApiController
     elsif params[:creator_id]
       creator = Creator.find_by_id(params{:creator_id})
       events =creator.events.limit(@limit).offset(@offset) if creator.present?
-    elsif params[:near_address]
-      events = get_events_near_positions([params[:latitude], params[:longitude]])
+    elsif params[:nearby_addresses]
+      events = get_nearby_positions(params[:nearby_addresses])
     else
       events = Event.all
     end
@@ -62,6 +62,8 @@ class Api::V1::EventsController < Api::V1::ApiController
       if event.save
 
         event.position = Position.create(event_params[:position])
+        event.position.save
+        10.times { puts event.position }
         respond_with event, status: 201, location: [:api, event]
       else
         render json: {errors: event.errors.messages}, status: :bad_request
@@ -119,7 +121,7 @@ class Api::V1::EventsController < Api::V1::ApiController
     true
   end
 
-  def get_events_near_positions(positions_params)
+  def get_nearby_positions(positions_params)
     events = []
     distance = params[:distance] ? params[:distance] : DISTANCE
     positions = Position.near(positions_params, distance, :units => :km)
