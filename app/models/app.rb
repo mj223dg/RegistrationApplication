@@ -7,6 +7,7 @@ class App < ActiveRecord::Base
 
   private
 
+
   def generate_api_key
     begin
       self.apikey = SecureRandom.hex
