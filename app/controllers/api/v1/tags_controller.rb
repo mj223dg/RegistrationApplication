@@ -1,4 +1,4 @@
-class Api::V1::TagsController < ApiController
+class Api::V1::TagsController < Api::V1::ApiController
   respond_to :json
 
   COULDNT_FIND_ID = "couldnt find an event with the id of "

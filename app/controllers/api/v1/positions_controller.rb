@@ -1,4 +1,4 @@
-class Api::V1::PositionsController < ApiController
+class Api::V1::PositionsController < Api::V1::ApiController
 
   def index
     respond_with Position.limit(@limit).offset(@offset)
