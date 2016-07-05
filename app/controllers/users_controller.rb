@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :check_if_correct_user, only: [:show, :edit, :update]
+
   WELCOME_TEXT = "Välkommen"
 
   def new
