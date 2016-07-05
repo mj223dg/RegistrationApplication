@@ -1,0 +1,8 @@
+<% flash.each do |message_type, message| %>
+  <!-- The HTML class will be for instance "flash-success" or "flash-notice" -->
+  <div class="alert alert-success">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <p class="notice"> <%= message %> </p>
+  </div>
+  <p class="alert"> <%= alert %> </p>
+<% end %>

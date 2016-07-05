@@ -22,6 +22,10 @@ module SessionsHelper
     end
   end
 
+  def check_if_correct_user
+   redirect_to root_path unless @user == currentdev_user
+  end
+
   def logged_in?
     !currentdev_user.nil?
   end
