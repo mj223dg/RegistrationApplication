@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :check_if_correct_user, only: [:show, :edit, :update]
+  # before_action :check_if_correct_user, only: [:show, :edit, :update]
 
   WELCOME_TEXT = "Välkommen"
 
@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    redirect_to root_path unless @user == currentdev_user
     if @user.save
       log_in @user
       flash[:success] = WELCOME_TEXT

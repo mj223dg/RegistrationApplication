@@ -5,7 +5,7 @@ class Api::V1::ApiController < ApplicationController
   before_action :authenticate
   before_filter :restrict_access
 
-  THERE_IS_NO_API_KEY = "Api-key is missing"
+  THERE_IS_NO_API_KEY = "Wrong api-key"
 
   #default parameters
   OFFSET = 0
@@ -27,9 +27,7 @@ class Api::V1::ApiController < ApplicationController
   def restrict_access
     api_key = request.headers["apikey"]
     app = App.where(apikey: api_key).first if api_key
-    unless app
-      render json: {error: THERE_IS_NO_API_KEY}, status: :not_found
-    end
+    render json: {error: THERE_IS_NO_API_KEY}, status: :not_found unless app
 
   end
 end

@@ -4,7 +4,10 @@ class Api::V1::CreatorsController < Api::V1::ApiController
   #COULDNT_FIND_ID = "couldnt find an creator with the id of "
 
   def index
+    creators = Creator.limit(@limit).offset(@offset)
+
     respond_with Creator.limit(@limit).offset(@offset)
+
   end
 
   def show
